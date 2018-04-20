@@ -6,4 +6,5 @@ public interface DAO {
 	public boolean createEmployee();
 	public boolean createEmployee(Employee employee);
 	public void getUserDetails();
+	public Employee getEmployee(String empName);
 }

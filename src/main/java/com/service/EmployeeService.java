@@ -22,6 +22,13 @@ public class EmployeeService implements InterfaceService{
 		return userDao.createEmployee(employee);
 	}
 	
+	public EmployeeModel getEmployee(String employeeName) {
+		EmployeeModel empModel=new EmployeeModel();
+		Employee emp =userDao.getEmployee(employeeName);
+		empModel.setName(emp.getName());
+		empModel.setLastName(emp.getLastName());
+		return empModel;
+	}
 	public void getUserDetails() {
 		 userDao.getUserDetails();
 	}

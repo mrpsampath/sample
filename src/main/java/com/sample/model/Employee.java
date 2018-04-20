@@ -18,10 +18,16 @@ public class Employee {
 	public String getLastName() {
 		return lastName;
 	}
+	public Employee() {
+		this.name="";
+		this.lastName ="";
+	}
+
 	public Employee(String name, String lastName) {
 		super();
 		this.name = name;
 		this.lastName = lastName;
 	}
+	
 	
 }

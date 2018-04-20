@@ -68,5 +68,22 @@ public class EmployeeCRUD implements DAO{
 		      }
 			return false;
 		}
+		
+		public Employee getEmployee(String employeeName) {
+			Session session = sessionFactory.openSession();
+			Employee emp=null;
+		    Transaction tx = null;
+		      try{
+		         tx = session.beginTransaction();
+		         emp = (Employee)session.get(Employee.class,employeeName);
+		         tx.commit();
+		      }catch (HibernateException e) {
+		         if (tx!=null) tx.rollback();
+		         e.printStackTrace(); 
+		      }finally {
+		         session.close(); 
+		      }
+			return emp;
+		}
 
 }
