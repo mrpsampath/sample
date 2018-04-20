@@ -3,7 +3,6 @@ package com.dao;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -51,6 +50,23 @@ public class EmployeeCRUD implements DAO{
 			 Employee employee = new Employee("hi", "bye");
 			 entityManager.unwrap(Session.class).saveOrUpdate(employee);//createCriteria(UserDetails.class);
 			//return criteria.list();
+		}
+
+		@Override
+		public boolean createEmployee(Employee employee) {
+			Session session = sessionFactory.openSession();
+		    Transaction tx = null;
+		      try{
+		         tx = session.beginTransaction();
+		         session.save(employee);
+		         tx.commit();
+		      }catch (HibernateException e) {
+		         if (tx!=null) tx.rollback();
+		         e.printStackTrace(); 
+		      }finally {
+		         session.close(); 
+		      }
+			return false;
 		}
 
 }
