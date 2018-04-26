@@ -34,4 +34,9 @@ public class EmployeeController {
 	    		return	 employeeService.getEmployee(employeeName);
 	    }
 	    
+	    @RequestMapping(value = "/deleteEmployee",method = RequestMethod.DELETE)
+	    public void deleteEmployee(@RequestParam String employeeName) {
+	    		 employeeService.deleteEmployee(employeeName);
+	    }
+	    
 }

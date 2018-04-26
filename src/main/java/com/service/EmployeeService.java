@@ -32,4 +32,9 @@ public class EmployeeService implements InterfaceService{
 	public void getUserDetails() {
 		 userDao.getUserDetails();
 	}
+
+	@Override
+	public void deleteEmployee(String employee) {
+		userDao.deleteEmployee(employee);
+	}
 }

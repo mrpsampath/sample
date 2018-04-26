@@ -86,4 +86,22 @@ public class EmployeeCRUD implements DAO{
 			return emp;
 		}
 
+		@Override
+		public void deleteEmployee(String employee) {
+			Session session = sessionFactory.openSession();
+			Employee emp=new Employee(employee,"");
+		    Transaction tx = null;
+		      try{
+		         tx = session.beginTransaction();
+		         emp = (Employee)session.get(Employee.class,employee);
+		         session.delete(emp);;
+		         tx.commit();
+		      }catch (HibernateException e) {
+		         if (tx!=null) tx.rollback();
+		         e.printStackTrace(); 
+		      }finally {
+		         session.close(); 
+		      }
+		}
+
 }
