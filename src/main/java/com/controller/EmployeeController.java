@@ -39,4 +39,10 @@ public class EmployeeController {
 	    		 employeeService.deleteEmployee(employeeName);
 	    }
 	    
+	    
+	    @RequestMapping(value = "/updateEmployee",method = RequestMethod.DELETE)
+	    public void updateEmployee(@RequestParam String employeeName) {
+	    		 employeeService.deleteEmployee(employeeName);
+	    }
+	    
 }
